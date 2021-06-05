@@ -18,9 +18,10 @@ public class Position {
         return col;
     }
 
-    public void moveDown(int distance) {
+    //cellSize
+    public void fallDown(int distance) {
         if(this.row + distance < Field.getHeight()) {
-
+           row += distance;
         }
     }
 

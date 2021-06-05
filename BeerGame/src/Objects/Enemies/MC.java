@@ -7,13 +7,9 @@ import Objects.Movable;
 
 public class MC extends Enemy {
 
-    private Position pos;
-
-    public MC(){
-        pos = new Position(0, randomCol()); //LEMBRAR PADDING, forma de aparecer
+    public MC(Position position){
+        super(position);
     }
 
-    private int randomCol(){
-        return (int) (Math.random() * Field.getWidth());
-    }
+
 }

@@ -5,20 +5,20 @@ import Field.Position;
 
 public class GoodBeer implements Movable {
 
-    private Position pos;
+    private Position position;
 
-    public GoodBeer(){
-
-        pos = new Position(0, randomCol());
+    public GoodBeer(Position position){
+        this.position = position;
     }
 
     @Override
     public void move(){
-
+        position.fallDown(1);
     }
 
-    private int randomCol(){
-        return (int) (Math.random() * Field.getWidth());
+    @Override
+    public Position getPosition() {
+        return position;
     }
 
 

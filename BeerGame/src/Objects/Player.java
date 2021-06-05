@@ -1,5 +1,6 @@
 package Objects;
 
+import Field.Position;
 import Objects.Movable;
 
 public class Player implements Movable {
@@ -7,11 +8,13 @@ public class Player implements Movable {
     private int livers;
     private int score;
     private boolean isDead;
+    private Position position;
 
-    public Player() {
+    public Player(Position position) {
         livers = 3;
         score = 0;
         isDead = false;
+        this.position = position;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class Player implements Movable {
         return livers;
     }
 
-    public void looseLivers() {
+    public void loseLivers() {
         livers--;
         if(livers  == 0){
             setDead();
@@ -43,7 +46,12 @@ public class Player implements Movable {
     }
 
     public void setScore(int score) {
-        this.score = score;
+        this.score += score;
+    }
+
+    @Override
+    public Position getPosition(){
+        return position;
     }
 
 
