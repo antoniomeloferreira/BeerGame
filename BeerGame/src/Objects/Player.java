@@ -20,7 +20,7 @@ public class Player implements Movable, KeyboardHandler {
         isDead = false;
         this.position = position;
         keyboardInit();
-        picture = new Picture(position.getCol(),position.getRow(), "ana.png" );
+        picture = new Picture(position.getCol(),position.getRow(), "stallman.png" );
         picture.draw();
     }
 

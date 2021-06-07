@@ -8,7 +8,7 @@ public class Field {
     private static int width;
     private static int height;
     public static final int PADDING = 10;
-    public static final int CELL_SIZE = 75;
+    public static final int CELL_SIZE = 80;
 
     //init()
     public static void init() {
