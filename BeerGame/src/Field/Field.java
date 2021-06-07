@@ -12,8 +12,8 @@ public class Field {
 
     //init()
     public static void init() {
-        //Picture background = new Picture(PADDING, CELL_SIZE, "beerground.jpeg");
-        Rectangle background = new Rectangle(PADDING, PADDING, 800, 900);
+        Picture background = new Picture(PADDING, PADDING, "beerground.jpeg");
+        //Rectangle background = new Rectangle(PADDING, PADDING, 800, 900);
         width = background.getWidth();
         height = background.getHeight();
         //background.grow(100, 100);

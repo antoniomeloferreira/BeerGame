@@ -9,7 +9,7 @@ import Objects.Enemies.MC;
 public class ObjectFactory {
 
     public static Player createPlayer(){
-        return new Player(new Position(Field.getWidth()/2, Field.getHeight() - 300));
+        return new Player(new Position(Field.getWidth()/2, Field.getHeight() - Field.CELL_SIZE));
     }
 
     public static Movable createBeers () {
