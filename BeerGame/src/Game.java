@@ -13,9 +13,9 @@ public class Game {
     public void init() {
         movables = new Movable[7];
         collisionDetector = new CollisionDetector(movables);
+        Field.init();
         player = ObjectFactory.createPlayer();
 
-        //Field.init();
     }
 
     private void fillArray() throws InterruptedException {
