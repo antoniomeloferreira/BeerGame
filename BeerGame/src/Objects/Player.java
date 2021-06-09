@@ -13,18 +13,21 @@ public class Player implements Movable, KeyboardHandler {
     private boolean isDead;
     private Position position;
     private Picture picture;
+    private boolean switchedKeyboard;
 
-    public Player(Position position){
+
+    public Player(Position position) {
         livers = 3;
         score = 0;
         isDead = false;
         this.position = position;
+        switchedKeyboard = false;
         keyboardInit();
-        picture = new Picture(position.getCol(),position.getRow(), "stallman.png" );
+        picture = new Picture(position.colToX(), position.rowToY(), "stallman.png");
         picture.draw();
     }
 
-    private void keyboardInit(){
+    private void keyboardInit() {
         Keyboard keyboard = new Keyboard(this);
 
         KeyboardEvent rightPressed = new KeyboardEvent();
@@ -42,18 +45,40 @@ public class Player implements Movable, KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        if (!switchedKeyboard) {
+            switch (keyboardEvent.getKey()) {
+                case KeyboardEvent.KEY_RIGHT:
+                    if (!(getPosition().getCol() == Field.getCols() - 1)) {
+                        picture.translate(Field.CELL_SIZE, 0);
+                        position.sideMove(1);
+                    }
+                    break;
 
-        switch (keyboardEvent.getKey()) {
+                case KeyboardEvent.KEY_LEFT:
+                    if (!(getPosition().getCol() == 0)) {
+                        picture.translate(-Field.CELL_SIZE, 0);
+                        position.sideMove(-1);
+                    }
+                    break;
+            }
+        } else {
+            switch (keyboardEvent.getKey()) {
+                case KeyboardEvent.KEY_LEFT:
+                    if (!(getPosition().getCol() == Field.getCols() - 1)) {
+                        picture.translate(Field.CELL_SIZE, 0);
+                        position.sideMove(1);
+                    }
+                    break;
 
-            case KeyboardEvent.KEY_RIGHT:
-                picture.translate(Field.CELL_SIZE, 0);
-                //position.sideMove(merdas);
-                break;
+                case KeyboardEvent.KEY_RIGHT:
+                    if (!(getPosition().getCol() == 0)) {
+                        picture.translate(-Field.CELL_SIZE, 0);
+                        position.sideMove(-1);
+                    }
+                    break;
 
-            case KeyboardEvent.KEY_LEFT:
-                picture.translate(-Field.CELL_SIZE, 0);
-                //position.sideMove(-merdas);
-                break;
+            }
+
         }
     }
 
@@ -80,7 +105,7 @@ public class Player implements Movable, KeyboardHandler {
 
     public void loseLivers() {
         livers--;
-        if(livers  == 0){
+        if (livers == 0) {
             setDead();
         }
     }
@@ -94,11 +119,15 @@ public class Player implements Movable, KeyboardHandler {
     }
 
     @Override
-    public Position getPosition(){
+    public Position getPosition() {
         return position;
     }
 
+    public void setSwitchedKeyboard(boolean trade) {
+        switchedKeyboard = trade;
+    }
 
-
-
+    public boolean isSwitchedKeyboard() {
+        return switchedKeyboard;
+    }
 }

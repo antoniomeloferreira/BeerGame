@@ -9,7 +9,7 @@ import Objects.Enemies.MC;
 public class ObjectFactory {
 
     public static Player createPlayer(){
-        return new Player(new Position(Field.getWidth()/2, Field.getHeight() - Field.CELL_SIZE));
+        return new Player(new Position(Field.getCols()/2, Field.getRows() -1));
     }
 
     public static Movable createBeers () {
@@ -37,7 +37,7 @@ public class ObjectFactory {
     }
 
     private static int randomCol(){
-        return (int) (Math.random() * Field.getWidth());
+        return (int) (Math.random() * Field.getCols());
     }
 
 }

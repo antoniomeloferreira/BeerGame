@@ -18,6 +18,9 @@ public class Position {
         return col;
     }
 
+    public void setRow(int row){
+        this.row = row;
+    }
     public void sideMove(int distance) {
         this.col += distance;
     }
@@ -26,13 +29,21 @@ public class Position {
 
     //cellSize
     public void fallDown(int distance) {
-        if(this.row + distance < Field.getHeight()) {
+        if(this.row + distance < Field.getRows()) {
            row += distance;
         }
     }
 
     public boolean equals(Position position){
         return (this.col == position.getCol() && this.row == position.getRow());
+    }
+
+    public int rowToY(){
+        return row * Field.CELL_SIZE;
+    }
+
+    public int colToX(){
+        return col * Field.CELL_SIZE;
     }
 
 
