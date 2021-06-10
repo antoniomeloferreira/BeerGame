@@ -15,30 +15,37 @@ public class CollisionDetector {
         if (player.getPosition().equals(obj.getPosition())) {
 
             if (obj instanceof MC) {
-                player.loseLivers();
-                ((MC) obj).getPicture().delete();
-                System.out.println(player.getLivers());
+                if (!((MC) obj).getIsCollided()) {
+                    ((MC) obj).isCollided(true);
+                    player.loseLivers();
+                    ((MC) obj).getPicture().delete();
+                    obj = null;
+                }
             }
 
             if (obj instanceof BadBeer) {
-                if (player.isSwitchedKeyboard()) {
-                    player.setSwitchedKeyboard(false);
-                    ((BadBeer) obj).getPicture().delete();
-                    obj = null;
-                    System.out.println("Apanhei Sean Troquei para false");
+                if (!((BadBeer) obj).getIsCollided()) {
+                    ((BadBeer) obj).isCollided(true);
+                    if (player.isSwitchedKeyboard()) {
+                        player.setSwitchedKeyboard(false);
+                        ((BadBeer) obj).getPicture().delete();
+                        obj = null;
 
-                } else {
-                    player.setSwitchedKeyboard(true);
-                    ((BadBeer) obj).getPicture().delete();
-                    obj = null;
-                    System.out.println("Apanhei Sean Troquei para true");
+                    } else {
+                        player.setSwitchedKeyboard(true);
+                        ((BadBeer) obj).getPicture().delete();
+                        obj = null;
+                    }
                 }
             }
 
             if (obj instanceof GoodBeer) {
-                player.setScore(5);
-                ((GoodBeer) obj).getPicture().delete();
-                System.out.println("Apanhei irene" + player.getScore());
+                if (!((GoodBeer) obj).getIsCollided()) {
+                    ((GoodBeer) obj).isCollided(true);
+                    player.setScore(5);
+                    ((GoodBeer) obj).getPicture().delete();
+                     obj = null;
+                }
             }
         }
     }

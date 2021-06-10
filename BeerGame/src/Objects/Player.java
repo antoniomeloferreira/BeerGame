@@ -23,7 +23,7 @@ public class Player implements Movable, KeyboardHandler {
         this.position = position;
         switchedKeyboard = false;
         keyboardInit();
-        picture = new Picture(position.colToX(), position.rowToY(), "stallman.png");
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "stallman.png");
         picture.draw();
     }
 
@@ -48,14 +48,14 @@ public class Player implements Movable, KeyboardHandler {
         if (!switchedKeyboard) {
             switch (keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_RIGHT:
-                    if (!(getPosition().getCol() == Field.getCols() - 1)) {
+                    if ((getPosition().getCol()) != (Field.getCols() - 1)) {
                         picture.translate(Field.CELL_SIZE, 0);
                         position.sideMove(1);
                     }
                     break;
 
                 case KeyboardEvent.KEY_LEFT:
-                    if (!(getPosition().getCol() == 0)) {
+                    if ((getPosition().getCol() != 0)) {
                         picture.translate(-Field.CELL_SIZE, 0);
                         position.sideMove(-1);
                     }
@@ -64,14 +64,14 @@ public class Player implements Movable, KeyboardHandler {
         } else {
             switch (keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_LEFT:
-                    if (!(getPosition().getCol() == Field.getCols() - 1)) {
+                    if ((getPosition().getCol()) != (Field.getCols() - 1)) {
                         picture.translate(Field.CELL_SIZE, 0);
                         position.sideMove(1);
                     }
                     break;
 
                 case KeyboardEvent.KEY_RIGHT:
-                    if (!(getPosition().getCol() == 0)) {
+                    if ((getPosition().getCol() != 0)) {
                         picture.translate(-Field.CELL_SIZE, 0);
                         position.sideMove(-1);
                     }
@@ -129,5 +129,10 @@ public class Player implements Movable, KeyboardHandler {
 
     public boolean isSwitchedKeyboard() {
         return switchedKeyboard;
+    }
+
+    @Override
+    public Picture getPicture(){
+        return picture;
     }
 }

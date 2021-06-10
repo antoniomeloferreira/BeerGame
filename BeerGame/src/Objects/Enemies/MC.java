@@ -9,10 +9,13 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class MC extends Enemy {
 
     private Picture picture;
+    private boolean isCollided;
+
     public MC(Position position){
         super(position);
-        picture = new Picture(position.colToX(), position.rowToY(), "antonio.png");
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "antonio.png");
         picture.draw();
+        this.isCollided = false;
     }
 
     @Override
@@ -23,5 +26,13 @@ public class MC extends Enemy {
 
     public Picture getPicture(){
         return picture;
+    }
+
+    public void isCollided(boolean isCollided){
+        this.isCollided = isCollided;
+    }
+
+    public boolean getIsCollided() {
+        return isCollided;
     }
 }

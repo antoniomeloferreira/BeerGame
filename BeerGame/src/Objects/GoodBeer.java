@@ -8,11 +8,13 @@ public class GoodBeer implements Movable {
 
     private Position position;
     private Picture picture;
+    private boolean isCollided;
 
     public GoodBeer(Position position){
         this.position = position;
-        picture = new Picture(position.colToX(), position.rowToY(), "irene.png");
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "irene.png");
         picture.draw();
+        this.isCollided = false;
     }
 
     @Override
@@ -30,4 +32,11 @@ public class GoodBeer implements Movable {
         return picture;
     }
 
+    public void isCollided(boolean isCollided){
+        this.isCollided = isCollided;
+    }
+
+    public boolean getIsCollided() {
+        return isCollided;
+    }
 }

@@ -38,11 +38,11 @@ public class Position {
         return (this.col == position.getCol() && this.row == position.getRow());
     }
 
-    public int rowToY(){
+    public int rowToY(int row){
         return row * Field.CELL_SIZE;
     }
 
-    public int colToX(){
+    public int colToX(int col){
         return col * Field.CELL_SIZE;
     }
 
