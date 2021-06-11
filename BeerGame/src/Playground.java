@@ -4,8 +4,10 @@ public class Playground {
 
     public static void main(String[] args) {
 
-        Game game = new Game();
-        game.start();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.init();
+
+
 
 
     }

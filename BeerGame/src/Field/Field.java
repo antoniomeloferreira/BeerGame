@@ -13,10 +13,11 @@ public class Field {
     private static int width;
     public static final int PADDING = 10;
     public static final int CELL_SIZE = 50;
+    private static Picture background;
 
     //init()
     public static void init() {
-        Picture background = new Picture(PADDING, PADDING, "interior.jpg");
+        background = new Picture(PADDING, PADDING, "interior.jpg");
         //Rectangle background = new Rectangle(PADDING, PADDING + 40, 800, 900);
         height = background.getHeight();
         width = background.getWidth();
@@ -36,6 +37,11 @@ public class Field {
         public static int getHeight(){
         return height;
         }
+
+    public static void delete() {
+        background.delete();
+    }
+
 
 }
 

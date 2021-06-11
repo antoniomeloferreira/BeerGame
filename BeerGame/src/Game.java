@@ -15,32 +15,38 @@ public class Game {
     private final int DELAY = 200;
     private ObjectList movables = new ObjectList();
     private CollisionDetector collisionDetector = new CollisionDetector();
+    private boolean gameOn = false;
+    private Text gameOver;
+    private Text score;
+    private Picture liver1;
+    private Picture liver2;
+    private Picture liver3;
 
     public void init() {
         Field.init();
-
         player = ObjectFactory.createPlayer();
+        gameOn = true;
+        start();
     }
 
 
     public void start() {
 
-        init();
 
-        Text score = new Text(50, 20, "Score: " + player.getScore());
+        score = new Text(50, 20, "Score: " + player.getScore());
         score.grow(20, 10);
         score.setColor(Color.WHITE);
         score.draw();
 
-        Picture liver1 = new Picture(670, 10, "liver.png");
-        Picture liver2 = new Picture(710, 10, "liver.png");
-        Picture liver3 = new Picture(750, 10, "liver.png");
+        liver1 = new Picture(670, 10, "liver.png");
+        liver2 = new Picture(710, 10, "liver.png");
+        liver3 = new Picture(750, 10, "liver.png");
         liver1.draw();
         liver2.draw();
         liver3.draw();
 
 
-        while (!player.getDead()) {
+        while (!player.getDead() && gameOn) {
 
 
             try {
@@ -92,7 +98,7 @@ public class Game {
         for (Movable movable : movables) {
             movable.getPicture().delete();
         }
-        Text gameOver = new Text(350, 250, "GAME OVER!");
+        gameOver = new Text(350, 250, "GAME OVER!");
         gameOver.setColor(Color.RED);
         gameOver.grow(200, 150);
         gameOver.draw();
@@ -100,6 +106,18 @@ public class Game {
         score.translate(465, 350);
 
     }
+
+    public void stop() {
+        gameOn = false;
+        Field.delete();
+        player.getPicture().delete();
+
+    }
+
+    public boolean isGameOn() {
+        return gameOn;
+    }
+
 
 }
 
