@@ -9,7 +9,7 @@ import Objects.Enemies.MC;
 public class ObjectFactory {
 
     public static Player createPlayer(){
-        return new Player(new Position(Field.getCols()/2, Field.getRows() -2));
+        return new Player(new Position(Field.getCols()/2, Field.getRows() -1));
     }
 
     public static Movable createBeers () {
@@ -21,15 +21,15 @@ public class ObjectFactory {
     }
 
     private static GoodBeer createGoodBeer(){
-        return new GoodBeer(new Position( randomCol(),-5));
+        return new GoodBeer(new Position( randomCol(),0));
     }
 
     private static BadBeer createBadBeer(){
-        return new BadBeer(new Position(randomCol(),-5));
+        return new BadBeer(new Position(randomCol(),0));
     }
 
     private static MC createMC(){
-        return new MC(new Position( randomCol(), -5));
+        return new MC(new Position( randomCol(), 0));
     }
 
     private static Enemy createEnemies(){

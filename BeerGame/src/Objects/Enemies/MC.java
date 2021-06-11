@@ -8,12 +8,29 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class MC extends Enemy {
 
+    private enum MCType{
+        PAULO ("paulo.png"),
+        PEDRO ("pedro.png"),
+        SARA ("sara.png");
+
+        private String picture;
+
+        MCType(String picture){
+            this.picture = picture;
+        }
+
+        public String getPicture(){
+            return picture;
+        }
+    }
+
     private Picture picture;
     private boolean isCollided;
 
     public MC(Position position){
         super(position);
-        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "antonio.png");
+        int McType = (int) (Math.random() * MCType.values().length);
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), MCType.values()[McType].getPicture());
         picture.draw();
         this.isCollided = false;
     }

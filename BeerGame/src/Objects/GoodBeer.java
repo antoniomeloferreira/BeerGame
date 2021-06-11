@@ -12,7 +12,7 @@ public class GoodBeer implements Movable {
 
     public GoodBeer(Position position){
         this.position = position;
-        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "irene.png");
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "superbock.png");
         picture.draw();
         this.isCollided = false;
     }

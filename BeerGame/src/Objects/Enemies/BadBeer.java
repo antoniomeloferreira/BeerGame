@@ -12,7 +12,7 @@ public class BadBeer extends Enemy {
 
     public BadBeer (Position position){
        super(position);
-       picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "sean.png");
+       picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "sagres.png");
        picture.draw();
        this.isCollided = false;
 

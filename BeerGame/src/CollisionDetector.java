@@ -18,23 +18,25 @@ public class CollisionDetector {
                 if (!((MC) obj).getIsCollided()) {
                     ((MC) obj).isCollided(true);
                     player.loseLivers();
-                    ((MC) obj).getPicture().delete();
-                    obj = null;
+                    obj.getPicture().delete();
+                    obj.getPosition().setRow(obj.getPosition().getRow()+2);
                 }
             }
 
             if (obj instanceof BadBeer) {
                 if (!((BadBeer) obj).getIsCollided()) {
                     ((BadBeer) obj).isCollided(true);
-                    if (player.isSwitchedKeyboard()) {
-                        player.setSwitchedKeyboard(false);
-                        ((BadBeer) obj).getPicture().delete();
-                        obj = null;
 
-                    } else {
+                    if (!player.isSwitchedKeyboard()) {
                         player.setSwitchedKeyboard(true);
-                        ((BadBeer) obj).getPicture().delete();
-                        obj = null;
+                        obj.getPicture().delete();
+                        obj.getPosition().setRow(obj.getPosition().getRow()+2);
+
+                    }
+                    else {
+                        player.setSwitchedKeyboard(false);
+                        obj.getPicture().delete();
+                        obj.getPosition().setRow(obj.getPosition().getRow()+2);
                     }
                 }
             }
@@ -43,8 +45,9 @@ public class CollisionDetector {
                 if (!((GoodBeer) obj).getIsCollided()) {
                     ((GoodBeer) obj).isCollided(true);
                     player.setScore(5);
-                    ((GoodBeer) obj).getPicture().delete();
-                     obj = null;
+                    obj.getPicture().delete();
+                    obj.getPosition().setRow(obj.getPosition().getRow()+2);
+
                 }
             }
         }

@@ -12,12 +12,12 @@ public class Field {
     private static int height;
     private static int width;
     public static final int PADDING = 10;
-    public static final int CELL_SIZE = 80;
+    public static final int CELL_SIZE = 50;
 
     //init()
     public static void init() {
-        //Picture background = new Picture(PADDING, PADDING, "beerground.jpeg");
-        Rectangle background = new Rectangle(PADDING, PADDING, 800, 900);
+        Picture background = new Picture(PADDING, PADDING, "interior.jpg");
+        //Rectangle background = new Rectangle(PADDING, PADDING + 40, 800, 900);
         height = background.getHeight();
         width = background.getWidth();
         cols = (int) (background.getWidth() / CELL_SIZE);

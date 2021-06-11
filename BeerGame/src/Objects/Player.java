@@ -23,7 +23,7 @@ public class Player implements Movable, KeyboardHandler {
         this.position = position;
         switchedKeyboard = false;
         keyboardInit();
-        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "stallman.png");
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "antonio.png");
         picture.draw();
     }
 
@@ -129,6 +129,10 @@ public class Player implements Movable, KeyboardHandler {
 
     public boolean isSwitchedKeyboard() {
         return switchedKeyboard;
+    }
+
+    public boolean switchTrue() {
+        return switchedKeyboard = true;
     }
 
     @Override

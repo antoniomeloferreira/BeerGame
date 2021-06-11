@@ -10,4 +10,6 @@ public interface Movable {
     Position getPosition();
 
     Picture getPicture();
+
+
 }
