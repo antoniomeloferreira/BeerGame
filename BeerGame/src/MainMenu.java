@@ -34,7 +34,7 @@ public class MainMenu implements KeyboardHandler {
         menuBg.draw();
         initMenuOptions();
         drawOptions(menuOptions);
-        keyHelp = new Text(150, 490, "[Q] QUIT / [Space] ENTER / [Arrows] Move");
+        keyHelp = new Text(155, 490, "[Space]: Enter / [Q]: Quit / [Arrows]: Move");
         keyHelp.draw();
         keyboardInit();
         initHelpTexts();
@@ -53,13 +53,13 @@ public class MainMenu implements KeyboardHandler {
     }
 
     public void initHelpTexts() {
-        int x = 105;
+        int x = 110;
         helpTexts[0] = new Text(x, 170, "Catch <BEERS> to increase your score.");
-        helpTexts[1] = new Text(x, 220, "Be careful! Some beers may have some");
-        helpTexts[2] = new Text(x, 270, "<UNDESIRED> effects, but as they say");
+        helpTexts[1] = new Text(x, 220, "Be careful!!!  Some beers may have an");
+        helpTexts[2] = new Text(x, 270, "<UNDESIRED> effect, but as they say");
         helpTexts[3] = new Text(x, 320, "\"LIKE <CURES> LIKE\"...  Also, don't let");
-        helpTexts[4] = new Text(x, 370, "the <MCS> see you drinking, otherwise");
-        helpTexts[5] = new Text(x, 420, "you lose a <LIVER>. GOOD CODEBREAK!");
+        helpTexts[4] = new Text(x, 370, "the <MCS> see you drinking, or you'll");
+        helpTexts[5] = new Text(x, 420, "lose a <LIVER>! GOOD CODEBREAK!!!");
         for (Text helps : helpTexts) {
             helps.grow(20, 15);
         }
