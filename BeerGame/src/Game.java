@@ -12,7 +12,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     private Player player;
-    private final int DELAY = 200;
+    private final int DELAY = 300;
     private ObjectList movables = new ObjectList();
     private CollisionDetector collisionDetector = new CollisionDetector();
     private boolean gameOn = false;
@@ -56,12 +56,26 @@ public class Game {
 
             while (!player.getDead()) {
 
-
+                if(player.getScore() <100){
                 try {
                     Thread.sleep(DELAY);
                 } catch (Exception e) {
-                    System.out.println("error");
-                }
+                    System.out.println("Muy herroroso");
+                }}
+
+                if(player.getScore() < 300){
+                    try {
+                        Thread.sleep(DELAY - 100);
+                    } catch (Exception e) {
+                        System.out.println("Muy herroroso");
+                    }}
+
+                if(player.getScore() >= 300){
+                    try {
+                        Thread.sleep(DELAY - 200);
+                    } catch (Exception e) {
+                        System.out.println("Muy herroroso");
+                    }}
 
                 if (player.getScore() <= 50) {
                     movables.add(ObjectFactory.createBeers());
@@ -114,7 +128,7 @@ public class Game {
             score.translate(465, 350);
             try {
                 Thread.sleep(50000);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Êrru");
             }
             stop();
@@ -127,7 +141,7 @@ public class Game {
         gameOn = false;
         Field.delete();
         player.getPicture().delete();
-        for(Movable movable : movables){
+        for (Movable movable : movables) {
             movable.getPicture().delete();
         }
         liver1.delete();
