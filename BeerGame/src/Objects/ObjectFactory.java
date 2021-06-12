@@ -13,11 +13,11 @@ public class ObjectFactory {
     }
 
     public static Movable createBeers () {
-        return (Math.random() < 0.8 ? createGoodBeer() : createBadBeer());
+        return (Math.random() < 0.75 ? createGoodBeer() : createBadBeer());
     }
 
     public static Movable createObjects(){
-        return (Math.random() < 0.7 ? createGoodBeer() : createEnemies());
+        return (Math.random() < 0.60 ? createGoodBeer() : createEnemies());
     }
 
     private static GoodBeer createGoodBeer(){
@@ -33,7 +33,7 @@ public class ObjectFactory {
     }
 
     private static Enemy createEnemies(){
-        return (Math.random() < 0.8 ? createBadBeer() : createMC());
+        return (Math.random() < 0.6 ? createBadBeer() : createMC());
     }
 
     private static int randomCol(){
