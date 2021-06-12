@@ -1,4 +1,5 @@
 import Field.Field;
+import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.simplegraphics.keyboard.*;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.*;
@@ -11,7 +12,9 @@ public class MainMenu implements KeyboardHandler {
     private Text[] menuOptions = new Text[3];
     private Text[] helpTexts = new Text[6];
     private boolean isHelpText = false;
+    private Text keyHelp;
 
+    private Sound selectOption;
 
     private Game game;
 
@@ -24,11 +27,15 @@ public class MainMenu implements KeyboardHandler {
     Picture menuBg;
 
 
+
+
     public void init() {
         menuBg = new Picture(PADDING, PADDING, "bar1.png");
         menuBg.draw();
         initMenuOptions();
         drawOptions(menuOptions);
+        keyHelp = new Text(150, 490, "[Q] QUIT / [Space] ENTER / [Arrows] Move");
+        keyHelp.draw();
         keyboardInit();
         initHelpTexts();
         game = new Game();
@@ -110,9 +117,12 @@ public class MainMenu implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+        selectOption = new Sound("/mouthdrop.wav");
+
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_DOWN:
+                selectOption.play(true);
                 if (menuOptions[1].getColor() == Color.RED) {
                     menuOptions[1].setColor(Color.BLACK);
                     menuOptions[2].setColor(Color.RED);
@@ -129,6 +139,7 @@ public class MainMenu implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_UP:
+                selectOption.play(true);
                 if (menuOptions[1].getColor() == Color.RED) {
                     menuOptions[1].setColor(Color.BLACK);
                     menuOptions[0].setColor(Color.RED);
@@ -146,12 +157,12 @@ public class MainMenu implements KeyboardHandler {
 
 
             case KeyboardEvent.KEY_SPACE:
+
                 if (menuOptions[0].getColor() == Color.RED) {
                     removeKeyPressed();
                     game = new Game();
                     game.init();
-                    //setThreadRunning(true);
-                    //isThreadRunning();
+                    selectOption.play(true);
                     break;
                 }
                 if (menuOptions[1].getColor() == Color.RED) {
@@ -159,12 +170,15 @@ public class MainMenu implements KeyboardHandler {
                     removeKeyPressed();
                     deleteOptions(menuOptions);
                     drawHelpText(helpTexts);
+                    selectOption.play(true);
                     break;
                 }
                 if (menuOptions[2].getColor() == Color.RED) {
+                    selectOption.play(true);
                     System.exit(0);
                     break;
                 }
+
                 break;
 
 
@@ -172,18 +186,18 @@ public class MainMenu implements KeyboardHandler {
 
                 if (menuOptions[0].getColor() == Color.RED) {
                     if (game.isGameOn()) {
-                        //setThreadRunning(false);
-                        //isThreadRunning();
-
                         keyboard.addEventListener(spacePressed);
                         keyboard.addEventListener(upPressed);
                         keyboard.addEventListener(downPressed);
+                        selectOption.play(true);
                         game.stop();
+
                         break;
                     } else {
                         menuOptions[2].setColor(Color.RED);
                         menuOptions[0].setColor(Color.BLACK);
                         menuOptions[1].setColor(Color.BLACK);
+                        selectOption.play(true);
                         break;
                     }
                 }
@@ -196,16 +210,19 @@ public class MainMenu implements KeyboardHandler {
                         keyboard.addEventListener(spacePressed);
                         keyboard.addEventListener(upPressed);
                         keyboard.addEventListener(downPressed);
+                        selectOption.play(true);
                         break;
                     } else {
                         menuOptions[2].setColor(Color.RED);
                         menuOptions[0].setColor(Color.BLACK);
                         menuOptions[1].setColor(Color.BLACK);
+                        selectOption.play(true);
                         break;
                     }
                 }
 
                 if (menuOptions[2].getColor() == Color.RED) {
+                    selectOption.play(true);
                     System.exit(0);
                     break;
                 }
