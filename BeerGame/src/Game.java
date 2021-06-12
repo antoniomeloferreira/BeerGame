@@ -209,7 +209,7 @@ public class Game {
     public void stop() {
         score.delete();
         thread.stop();
-        //music.stop();
+        music.stop();
         gameOn = false;
         Field.delete();
         player.getPicture().delete();
