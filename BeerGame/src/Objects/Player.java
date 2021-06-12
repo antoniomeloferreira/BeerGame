@@ -15,6 +15,51 @@ public class Player implements Movable, KeyboardHandler {
     private Picture picture;
     private boolean switchedKeyboard;
 
+    private enum PlayerType {
+        ANA ("ana.png"),
+        ANDRE ("andre.png"),
+        ANTONIO ("antonio.png"),
+        BENTO ("bento.png"),
+        BERTOLO ("bertolo.png"),
+        CARNEIRO ("carneiro.png"),
+        CATARINA ("catarina.png"),
+        CHICO ("chico.png"),
+        DIANA ("diana.png"),
+        FONTE ("fonte.png"),
+        GONCALO ("goncalo.png"),
+        HADASSA ("hadassa.png"),
+        IGREJA ("igreja.png"),
+        IRENE ("irene.png"),
+        LEITE ("leite.png"),
+        MARILIA ("marilia.png"),
+        MARTA ("marta.png"),
+        MEGO ("mego.png"),
+        PATRICIA ("patricia.png"),
+        PEREIRA ("pereira.png"),
+        POLICARPO ("policarpo.png"),
+        RAFAEL ("rafael.png"),
+        RODRIGO ("rodrigo.png"),
+        RUI ("rui.png"),
+        SANTOS ("santos.png"),
+        SEAN ("sean.png"),
+        STALLMAN ("stallman.png"),
+        STALLMAN2 ("stallman copy.png"),
+        STEVENSON ("stevenson.png"),
+        THOMAZ ("thomaz.png"),
+        TRANCOSO ("trancoso.png"),
+        ZE ("ze.png");
+
+        private String picture;
+
+        PlayerType(String picture) {
+            this.picture = picture;
+        }
+
+        public String getPicture() {
+            return picture;
+        }
+    }
+
 
     public Player(Position position) {
         livers = 3;
@@ -23,7 +68,8 @@ public class Player implements Movable, KeyboardHandler {
         this.position = position;
         switchedKeyboard = false;
         keyboardInit();
-        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), "antonio.png");
+        int PlayerType = (int) (Math.random() * Player.PlayerType.values().length);
+        picture = new Picture(position.colToX(position.getCol()), position.rowToY(position.getRow()), Player.PlayerType.values()[PlayerType].getPicture());
         picture.draw();
     }
 
